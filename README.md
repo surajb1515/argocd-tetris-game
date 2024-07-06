@@ -29,8 +29,9 @@ terraform destroy --auto-approve
 
 ![Untitled](/Images/terraform-apply.png)
 
-## Achitecture of AWS EKS Cluster
+## Achitecture of AWS EKS Cluster and ArgoCD
 ![Untitled](/Images/eks.png)
+![Untitled](/Images/argocd-arch.png)
 
 
 ## To setup ArgoCD on Kubernetes
