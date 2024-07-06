@@ -27,10 +27,10 @@ terraform apply --auto-approve
 terraform destroy --auto-approve
 ```
 
-![Untitled](/images/terraform-apply.png)
+![Untitled](/Images/terraform-apply.png)
 
 ## Achitecture of AWS EKS Cluster
-![Untitled](/images/eks.png)
+![Untitled](/Images/eks.png)
 
 
 ## To setup ArgoCD on Kubernetes
@@ -51,15 +51,15 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 
 ```
 
-![suraj](/images/argocd-ui.png)
+![suraj](/Images/argocd-ui.png)
 
 Now Create new application in argocd using github repo link
 
-![suraj](/images/argocd-2.png)
-![suraj](/images/argocd-3.png)
-![suraj](/images/terminal-1.png)
+![suraj](/Images/argocd-2.png)
+![suraj](/Images/argocd-3.png)
+![suraj](/Images/terminal-1.png)
 
 ### Finally the tetris is deployed on the public AWS LoadBalancer
-![suraj](/images/game-2.png)
+![suraj](/Images/game-2.png)
 
 
