@@ -1,0 +1,65 @@
+# Tetris Game on Kubernetes using ArgoCD
+
+Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently. Terraform can manage existing and popular service providers as well as custom in-house solutions.
+
+The key features of Terraform are:
+
+- **Infrastructure as Code**: Infrastructure is described using a high-level configuration syntax. This allows a blueprint of your datacenter to be versioned and treated as you would any other code. Additionally, infrastructure can be shared and re-used.
+- **Execution Plans**: Terraform has a "planning" step where it generates an execution plan. The execution plan shows what Terraform will do when you call apply. This lets you avoid any surprises when Terraform manipulates infrastructure.
+- **Change Automation**: Complex changesets can be applied to your infrastructure with minimal human interaction. With the previously mentioned execution plan and resource graph, you know exactly what Terraform will change and in what order, avoiding many possible human errors.
+
+## Prerequisites
+
+1. [AWS Account](https://aws.amazon.com/account/)
+2. [Install AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+3. [Install Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) 
+4. [Configure AWS credentials](https://docs.aws.amazon.com/cli/v1/userguide/cli-chap-configure.html)
+5. [GitLab Account](https://gitlab.com)
+
+
+## Terraform Commands
+
+```bash
+terraform init
+terraform validate
+terraform plan 
+terraform apply --auto-approve
+terraform destroy --auto-approve
+```
+
+![Untitled](/images/terraform-apply.png)
+
+## Achitecture of AWS EKS Cluster
+![Untitled](/images/eks.png)
+
+
+## To setup ArgoCD on Kubernetes
+```bash
+kubectl create namespace argocd
+
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
+
+To expose ArgoCD UI
+```bash
+kubectl port-forward -n argocd svc/argocd-server 8080:443
+
+
+# username is admin
+# and for password
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+
+```
+
+![suraj](/images/argocd-ui.png)
+
+Now Create new application in argocd using github repo link
+
+![suraj](/images/argocd-2.png)
+![suraj](/images/argocd-3.png)
+![suraj](/images/terminal-1.png)
+
+### Finally the tetris is deployed on the public AWS LoadBalancer
+![suraj](/images/game-2.png)
+
+
